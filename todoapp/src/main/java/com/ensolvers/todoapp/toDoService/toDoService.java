@@ -1,14 +1,14 @@
-package com.ensolvers.toDoService;
+package com.ensolvers.todoapp.toDoService;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
-import com.ensolvers.toDoModel.*;
+import com.ensolvers.todoapp.toDoModel.*;
 
 
-import com.ensolvers.toDoRepostory.toDoRepository;
+import com.ensolvers.todoapp.toDoRepostory.toDoRepository;
 
 @Service
 public class toDoService implements ItoDoService {

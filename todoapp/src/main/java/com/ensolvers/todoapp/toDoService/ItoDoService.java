@@ -1,10 +1,10 @@
-package com.ensolvers.toDoService;
+package com.ensolvers.todoapp.toDoService;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ensolvers.toDoModel.toDoItem;
+import com.ensolvers.todoapp.toDoModel.toDoItem;
 
 @Service
 public interface ItoDoService {

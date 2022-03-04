@@ -1,4 +1,4 @@
-package com.ensolvers.toDoController;
+package com.ensolvers.todoapp.toDoController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,17 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ensolvers.toDoModel.toDoItem;
-import com.ensolvers.toDoService.toDoService;
+import com.ensolvers.todoapp.toDoModel.toDoItem;
+import com.ensolvers.todoapp.toDoService.toDoService;
 
 
 //	front-end			java-server
 //	HttpRequest ----> Controller ---> Service ----> Repository
 //	frontend	 <---- Controller<----Service <-----
 
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
+
+
 @RestController
-@RequestMapping(value = "api/item")
+@RequestMapping(value = "/")
 public class toDoController {
 
 	@Autowired
@@ -40,9 +42,9 @@ public class toDoController {
 	}
 	
 	
-	
+
 	//fetch all todo items (from database)
-	@GetMapping(value ="/get")
+	@GetMapping("get")
 	public ResponseEntity<Object> fetchAlltoDoItems(){
 		LOG.info( "METHOD : fetchALL toDoList");
 		List<toDoItem> todoItems =	new ArrayList<toDoItem>();
@@ -59,7 +61,7 @@ public class toDoController {
 	//	ResponseEntity.ok(todoItems); its the same, just a little bit lazier.
 	
 	}
-	@PostMapping(value ="/save")
+	@PostMapping("save")
 	public ResponseEntity<Object> save (@RequestBody toDoItem item) {
 		LOG.info("METHOD : save toDoItem");
 		toDoItem newItem = new toDoItem();
@@ -76,7 +78,7 @@ public class toDoController {
 		
 	}
 	
-	@PostMapping (value = "/delete")
+	@PostMapping ("delete")
 	public ResponseEntity<Object> delete (@RequestParam ("id") Long id){
 		LOG.info("METHOD: DELETE TODO");
 		try {
@@ -90,7 +92,7 @@ public class toDoController {
 		return new ResponseEntity<>("Eliminado",HttpStatus.OK);
 	}
 	
-	@PostMapping (value = "/edit")
+	@PostMapping ("edit")
 	public ResponseEntity<Object> edit (@RequestBody toDoItem item){
 		LOG.info("METHOD : edit item");
 		toDoItem editItem = new toDoItem();
